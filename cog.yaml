@@ -1,0 +1,16 @@
+build:
+  gpu: false
+  system_packages:
+    - "wget"
+  python_version: "3.11"
+  # a list of packages in the format <package-name>==<version>
+  python_packages:
+    - "json-schema-enforcer==0.1.4"
+    - "llama-cpp-python==0.2.5"
+  run:
+    #- "git clone https://github.com/ggerganov/llama.cpp.git"
+    #- "make -C llama.cpp"
+    - "mkdir -p models"
+    - "wget https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/resolve/main/llama-2-7b-chat.Q5_K_S.gguf -O models/llama-2-7b-chat.Q5_K_S.gguf"
+
+predict: "predict.py:Predictor"
